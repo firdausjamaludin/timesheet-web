@@ -1,0 +1,49 @@
+h2 {
+  margin: 25px;
+}
+
+mat-card {
+  margin: 25px;
+  border: 1px solid darkgrey;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 50px;
+}
+
+.paragraph {
+  margin: 0 10px; /* Adjust the margin value as needed */
+}
+
+#topCard {
+  text-align: center;
+}
+
+input {
+  width: 40%;
+  height: 20px;
+}
+
+.topButton {
+  margin: 0px 25px;
+  width: 10%;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 11%;
+}
+
+
+
