@@ -9,13 +9,13 @@
                 <table>
                     <tr>
                         <td class="task"><p class="centered">Task</p></td>
-                        <td><input matInput (keyup)="applyFilter($event)" #input></td>
+                        <td><input matInput #input></td> <!--(keyup)="applyFilter($event)"-->
                         <td class="task"><p></p></td>
                     </tr>
                 </table>
             </div>
 
-            <button class="topButton" mat-raised-button color="primary">Search</button>
+            <button class="topButton" mat-raised-button color="primary" (click)="search(input.value)">Search</button>
             <button class="topButton" mat-raised-button color="primary">Create</button>
         </mat-card-content>
     </mat-card>
@@ -23,7 +23,7 @@
     <mat-card id="botCard" [appearance]="cardAppearance">
         <mat-card-content>
 
-            <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table id="btm-table" [dataSource]="dataSource" matSort>
 
                 <!-- ID Column -->
                 <ng-container matColumnDef="project">
@@ -38,21 +38,21 @@
                 </ng-container>
 
                 <!-- Assigned Column -->
-                <ng-container matColumnDef="assignedTo">
+                <ng-container matColumnDef="user">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To</th>
-                    <td mat-cell *matCellDef="let row"> {{row.assignedTo}} </td>
+                    <td mat-cell *matCellDef="let row"> {{row.user}} </td>
                 </ng-container>
 
                 <!-- From Column -->
-                <ng-container matColumnDef="from">
+                <ng-container matColumnDef="startDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> From</th>
-                    <td mat-cell *matCellDef="let row"> {{ row.from | date:'dd-MM-yyyy' }} </td>
+                    <td mat-cell *matCellDef="let row"> {{ row.startDate | date:'dd-MM-yyyy' }} </td>
                 </ng-container>
 
                 <!-- To Column -->
-                <ng-container matColumnDef="to">
+                <ng-container matColumnDef="dueDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> To</th>
-                    <td mat-cell *matCellDef="let row"> {{ row.to | date:'dd-MM-yyyy' }} </td>
+                    <td mat-cell *matCellDef="let row"> {{ row.dueDate | date:'dd-MM-yyyy' }} </td>
                 </ng-container>
 
                 <!-- Status Column -->

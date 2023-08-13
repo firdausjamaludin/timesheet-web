@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatCardAppearance} from "@angular/material/card";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
@@ -10,31 +10,27 @@ import {RestapiService} from "../../services/restapi.service";
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css']
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnInit, AfterViewInit {
   cardAppearance: MatCardAppearance = 'outlined';
-
-
-  displayedColumns: string[] = ['project', 'task', 'assignedTo', 'from', 'to', 'status', 'action'];
+  displayedColumns: string[] = ['project', 'task', 'user', 'startDate', 'dueDate', 'status', 'action'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-      private restApiService: RestapiService
+    private restApiService: RestapiService,
   ) {
   }
 
   ngOnInit() {
-    this.restApiService.listAll().subscribe(data => {
-      this.dataSource.data = data;
-    })
+    // this.restApiService.listAll().subscribe(data => {
+    //   this.dataSource.data = data;
+    // });
   }
 
   ngAfterViewInit() {
-
     this.dataSource.paginator = this.paginator;
-
     this.dataSource.sort = this.sort;
   }
 
@@ -45,6 +41,12 @@ export class UsersListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  search(str: string) {
+    this.restApiService.listTask(str).subscribe(data => {
+      this.dataSource.data = data;
+    });
   }
 }
 

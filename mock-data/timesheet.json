@@ -1,10 +1,19 @@
 {
   "timesheet": [
-    {"id": 1, "project": "Timesheet Application", "task": "Create HTML Layout", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "Closed"},
-    {"id": 2,"project": "Timesheet Application", "task": "Create Back-End Service", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"},
-    {"id": 3,"project": "Timesheet Application", "task": "Create Database", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "In Progress"},
-    {"id": 4,"project": "Timesheet Application", "task": "Create Database Tables", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"},
-    {"id": 5,"project": "Timesheet Application", "task": "Create CSS", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "In Progress"},
-    {"id": 6,"project": "Timesheet Application", "task": "Create Angular Code", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"}
+    {"timesheet_id": 1, "project": "Timesheet Application", "task": "Create HTML Layout", "user_id": 0, "user": "Johan Arif", "startDate": "10-01-2023", "dueDate": "10-01-2023", "status_id": 0, "status": "Closed"},
+    {"timesheet_id": 2,"project": "Timesheet Application", "task": "Create Back-End Service", "user_id": 1, "user": "Mariam Mohammad", "startDate": "10-01-2023", "dueDate": "10-01-2023", "status_id": 1, "status": "Open"},
+    {"timesheet_id": 3,"project": "Timesheet Application", "task": "Create Database", "user_id": 0, "user": "Johan Arif", "startDate": "10-01-2023", "dueDate": "10-01-2023","status_id": 2, "status": "In Progress"},
+    {"timesheet_id": 4,"project": "Timesheet Application", "task": "Create Database Tables", "user_id": 1, "user": "Mariam Mohammad", "startDate": "10-01-2023", "dueDate": "10-01-2023", "status_id": 1, "status": "Open"},
+    {"timesheet_id": 5,"project": "Timesheet Application", "task": "Create CSS", "user_id": 0, "user": "Johan Arif", "startDate": "10-01-2023", "dueDate": "10-01-2023","status_id": 2, "status": "In Progress"},
+    {"timesheet_id": 6,"project": "Timesheet Application", "task": "Create Angular Code", "user_id": 1, "user": "Mariam Mohammad", "startDate": "10-01-2023", "dueDate": "10-01-2023", "status_id": 1, "status": "Open"}
+  ],
+  "user": [
+    {"user_id": 1, "user": "Johan Arif"},
+    {"user_id": 2, "user": "Mariam Mohammad"}
+  ],
+  "status": [
+    {"status_id": 1, "status": "Closed"},
+    {"status_id": 2, "status": "Open"},
+    {"status_id": 3, "status": "In Progress"}
   ]
 }
