@@ -1,49 +1,88 @@
-h2 {
-  margin: 25px;
+
+#card-title {
+    margin: 25px;
+    border: unset;
+    & p {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-weight: bold;
+    }
+}
+
+.mat-card-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 1100px;
 }
 
 mat-card {
-  margin: 25px;
-  border: 1px solid darkgrey;
+    border: 1px solid darkgrey;
+    margin: 0 25px 25px;
+    width: 1020px;
+    box-sizing: border-box;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0px 50px;
+.top-input {
+    text-align: center;
 }
 
-.paragraph {
-  margin: 0 10px; /* Adjust the margin value as needed */
+.top-input {
+    margin: 15px;
+
+    & table {
+        width: 100%;
+
+        & .task {
+            width: 22%;
+        }
+
+        & input {
+            width: 400px;
+        }
+
+    }
 }
 
-#topCard {
-  text-align: center;
+.centered {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    float: right;
 }
 
 input {
-  width: 40%;
-  height: 20px;
+    width: 40%;
+    height: 20px;
+
+}
+
+#topCard {
+    text-align: center;
+}
+
+
+.mat-card-center input {
+    align-self: center;
 }
 
 .topButton {
-  margin: 0px 25px;
-  width: 10%;
+    margin: 0 25px;
+    width: 10%;
 }
 
 table {
-  width: 100%;
+    /*width: 100%;*/
 }
 
 .mat-mdc-form-field {
-  font-size: 14px;
-  width: 100%;
+    font-size: 14px;
+    width: 100%;
 }
 
 td, th {
-  width: 11%;
+    width: auto;
 }
-
-
-

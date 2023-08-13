@@ -1,0 +1,10 @@
+{
+  "timesheet": [
+    {"id": 1, "project": "Timesheet Application", "task": "Create HTML Layout", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "Closed"},
+    {"id": 2,"project": "Timesheet Application", "task": "Create Back-End Service", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"},
+    {"id": 3,"project": "Timesheet Application", "task": "Create Database", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "In Progress"},
+    {"id": 4,"project": "Timesheet Application", "task": "Create Database Tables", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"},
+    {"id": 5,"project": "Timesheet Application", "task": "Create CSS", "assignedTo": "Johan Arif", "from": "10-01-2023", "to": "10-01-2023", "status": "In Progress"},
+    {"id": 6,"project": "Timesheet Application", "task": "Create Angular Code", "assignedTo": "Mariam Mohammad", "from": "10-01-2023", "to": "10-01-2023", "status": "Open"}
+  ]
+}

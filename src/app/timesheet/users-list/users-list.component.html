@@ -1,84 +1,91 @@
-<h2>Timesheet Entries</h2>
-<mat-card id="topCard" [appearance]="cardAppearance">
-  <mat-card-content>
+<div class="mat-card-center">
+    <mat-card id="card-title" [appearance]="cardAppearance">
+        <p>Timesheet Entries</p>
+    </mat-card>
 
-    <div class="flex-container">
-      <p class="paragraph">Task</p>
-      <input matInput (keyup)="applyFilter($event)" #input>
-    </div>
+    <mat-card id="topCard" [appearance]="cardAppearance">
+        <mat-card-content>
+            <div class="top-input">
+                <table>
+                    <tr>
+                        <td class="task"><p class="centered">Task</p></td>
+                        <td><input matInput (keyup)="applyFilter($event)" #input></td>
+                        <td class="task"><p></p></td>
+                    </tr>
+                </table>
+            </div>
 
-    <button class="topButton" mat-raised-button color="primary">Search</button>
-    <button class="topButton" mat-raised-button color="primary">Create</button>
-  </mat-card-content>
-</mat-card>
+            <button class="topButton" mat-raised-button color="primary">Search</button>
+            <button class="topButton" mat-raised-button color="primary">Create</button>
+        </mat-card-content>
+    </mat-card>
 
-<mat-card id="botCard" [appearance]="cardAppearance">
-  <mat-card-content>
+    <mat-card id="botCard" [appearance]="cardAppearance">
+        <mat-card-content>
 
-    <table mat-table [dataSource]="dataSource" matSort>
+            <table mat-table [dataSource]="dataSource" matSort>
 
-      <!-- ID Column -->
-      <ng-container matColumnDef="project">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Project </th>
-        <td mat-cell *matCellDef="let row"> {{row.project}} </td>
-      </ng-container>
+                <!-- ID Column -->
+                <ng-container matColumnDef="project">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Project</th>
+                    <td mat-cell *matCellDef="let row"> {{row.project}} </td>
+                </ng-container>
 
-      <!-- Progress Column -->
-      <ng-container matColumnDef="task">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Task </th>
-        <td mat-cell *matCellDef="let row"> {{row.task}} </td>
-      </ng-container>
+                <!-- Task Column -->
+                <ng-container matColumnDef="task">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Task</th>
+                    <td mat-cell *matCellDef="let row"> {{row.task}} </td>
+                </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="assignedTo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To </th>
-        <td mat-cell *matCellDef="let row"> {{row.assignedTo}} </td>
-      </ng-container>
+                <!-- Assigned Column -->
+                <ng-container matColumnDef="assignedTo">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Assigned To</th>
+                    <td mat-cell *matCellDef="let row"> {{row.assignedTo}} </td>
+                </ng-container>
 
-      <!-- Fruit Column -->
-      <ng-container matColumnDef="from">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> From </th>
-        <td mat-cell *matCellDef="let row"> {{row.from}} </td>
-      </ng-container>
+                <!-- From Column -->
+                <ng-container matColumnDef="from">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> From</th>
+                    <td mat-cell *matCellDef="let row"> {{ row.from | date:'dd-MM-yyyy' }} </td>
+                </ng-container>
 
-      <!-- Fruit Column -->
-      <ng-container matColumnDef="to">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> To </th>
-        <td mat-cell *matCellDef="let row"> {{row.to}} </td>
-      </ng-container>
+                <!-- To Column -->
+                <ng-container matColumnDef="to">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> To</th>
+                    <td mat-cell *matCellDef="let row"> {{ row.to | date:'dd-MM-yyyy' }} </td>
+                </ng-container>
 
-      <!-- Fruit Column -->
-      <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-        <td mat-cell *matCellDef="let row"> {{row.status}} </td>
-      </ng-container>
+                <!-- Status Column -->
+                <ng-container matColumnDef="status">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+                    <td mat-cell *matCellDef="let row"> {{row.status}} </td>
+                </ng-container>
 
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th *matHeaderCellDef mat-header-cell mat-sort-header> </th>
-        <td *matCellDef="let row" mat-cell>
-          <button mat-icon-button>
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button>
-            <mat-icon>delete</mat-icon>
-          </button>
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th *matHeaderCellDef mat-header-cell mat-sort-header></th>
+                    <td *matCellDef="let row" mat-cell>
+                        <button mat-icon-button>
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
 
-        </td>
-      </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <!-- Row shown when there is no matching data. -->
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
 
-      <!-- Row shown when there is no matching data. -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>
-    </table>
+            <!--    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>-->
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </mat-card-content>
+    </mat-card>
+</div>
 
-
-
-  </mat-card-content>
-</mat-card>
