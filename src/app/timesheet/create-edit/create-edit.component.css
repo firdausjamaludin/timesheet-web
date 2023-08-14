@@ -1,0 +1,24 @@
+table {
+    width: 600px;
+
+    & td {
+        width: 25%;
+    }
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.centerButton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    & button {
+        margin: 0 25px;
+        width: 15%;
+    }
+}

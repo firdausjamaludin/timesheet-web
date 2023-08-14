@@ -79,13 +79,11 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
-                <td>
-                    <button class="formButton" color="primary" mat-raised-button type="submit">{{ data ? "Update" : "Save" }}</button>
-                    <button class="formButton" color="primary" [mat-dialog-close]="false" mat-raised-button type="button">Close</button>
-                </td>
-            </tr>
         </table>
+        <div class="centerButton">
+            <button class="formButton" color="primary" mat-raised-button type="submit">{{ data ? "Update" : "Save" }}</button>
+            <button class="formButton" color="primary" [mat-dialog-close]="false" mat-raised-button type="button">Close</button>
+        </div>
     </form>
 </div>
 
