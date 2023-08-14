@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {map, Observable, of} from "rxjs";
+import {map, Observable} from "rxjs";
 import {ModifiedTimesheet} from "../interfaces/modifiedTimesheet";
 import {Timesheet} from "../interfaces/timesheet";
 import {environment} from "../../environments/environment.development";
-import {parse} from 'date-fns';
 
 @Injectable({
     providedIn: 'root'
@@ -30,9 +29,6 @@ export class RestapiService {
             .pipe(
                 map((data: Timesheet[]) => {
                     return data.map(item => {
-                        const fromDate = parse(item.startDate, 'yyyy-MM-dd', new Date());
-                        const toDate = parse(item.dueDate, 'yyyy-MM-dd', new Date());
-
                         const userData = item.user.user;
                         const statusData = item.status.status;
 
@@ -41,8 +37,8 @@ export class RestapiService {
                             project: item.project,
                             task: item.task,
                             user: userData,
-                            startDate: fromDate,
-                            dueDate: toDate,
+                            startDate: item.startDate,
+                            dueDate: item.dueDate,
                             status: statusData,
                             createdAt: null,
                             updatedAt: null,
@@ -62,8 +58,6 @@ export class RestapiService {
             .pipe(
                 map((data: Timesheet[]) => {
                     return data.map(item => {
-                        const fromDate = parse(item.startDate, 'yyyy-MM-dd', new Date());
-                        const toDate = parse(item.dueDate, 'yyyy-MM-dd', new Date());
 
                         const userData = item.user.user;
                         const statusData = item.status.status;
@@ -73,8 +67,8 @@ export class RestapiService {
                             project: item.project,
                             task: item.task,
                             user: userData,
-                            startDate: fromDate,
-                            dueDate: toDate,
+                            startDate: item.startDate,
+                            dueDate: item.startDate,
                             status: statusData,
                             createdAt: null,
                             updatedAt: null,
@@ -89,20 +83,21 @@ export class RestapiService {
 
     // Add Data API
     createTimesheet(formData: ModifiedTimesheet): Observable<any> {
-        return of(null);
+        let url = this.getUrl(`/api/timesheet/createTimesheets`);
+
+        return this.http.post(url, formData, this.httpOptions);
     }
 
     // Edit Data API
     editTimesheet(formData: ModifiedTimesheet): Observable<any> {
-        return of(null);
+        const url = this.getUrl(`/editTimesheets/${formData.timesheetId}`);
+
+        return this.http.put(url, formData, this.httpOptions);
     }
 
     // Delete Specific Data API
-
-    deleteTimesheet(row: any): Observable<any>  {
-        return of(null);
-
+    deleteTimesheet(timesheetId: number): Observable<any> {
+        const url = this.getUrl(`/deleteTimesheets/${timesheetId}`);
+        return this.http.delete(url, this.httpOptions);
     }
-
-
 }

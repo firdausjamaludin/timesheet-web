@@ -5,8 +5,8 @@ export interface ModifiedTimesheet {
   timesheetId: number;
   project: string;
   task: string;
-  startDate: Date;
-  dueDate: Date;
+  startDate: string;
+  dueDate: string;
   user: string;
   status: string;
 }
