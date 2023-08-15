@@ -1,12 +1,15 @@
+import {User} from "./user";
+import {Status} from "./status";
+
 export interface ModifiedTimesheet {
-  createdAt: string | null;
-  updatedAt: string | null;
-  isDeleted: boolean;
+  // createdAt: string | null;
+  // updatedAt: string | null;
+  // isDeleted: boolean;
   timesheetId: number;
   project: string;
   task: string;
   startDate: string;
   dueDate: string;
-  user: string;
-  status: string;
+  user: User;
+  status: Status;
 }

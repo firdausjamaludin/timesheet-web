@@ -4,6 +4,8 @@ import {RestapiService} from "../../services/restapi.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ModifiedTimesheet} from "../../interfaces/modifiedTimesheet";
 import {FormService} from "../../services/form.service";
+import {Status} from "../../interfaces/status";
+import {User} from "../../interfaces/user";
 
 @Component({
     selector: 'app-create-edit',
@@ -13,15 +15,15 @@ import {FormService} from "../../services/form.service";
 export class CreateEditComponent implements OnInit {
     userForm: FormGroup;
 
-    statusData: string[] = [
-        "Closed",
-        "Open",
-        "In Progress"
+    statusData: Status[] = [
+      {statusId: 1, status: "Closed"},
+      {statusId: 2, status: "Open"},
+      {statusId: 3, status: "In Progress"},
     ];
 
-    userData: string[] = [
-        "Johan Arif",
-        "Mariam Mohammad"
+    userData: User[] = [
+      {userId: 1, user: "Johan Arif"},
+      {userId: 2, user: "Mariam Mohammad"}
     ];
 
     constructor(
@@ -32,16 +34,16 @@ export class CreateEditComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) public data: ModifiedTimesheet
     ) {
         this.userForm = this.formBuilder.group({
-            createdAt: [this.data ? this.data.createdAt : '', Validators.required],
-            updatedAt: [this.data ? this.data.updatedAt : '', Validators.required],
-            isDeleted: [this.data ? this.data.isDeleted : '', Validators.required],
-            timesheetId: [this.data ? this.data.timesheetId : '', Validators.required],
-            project: [this.data ? this.data.project : '', Validators.required],
-            task: [this.data ? this.data.task : '', Validators.required],
-            startDate: [this.data ? this.data.startDate : '', Validators.required],
-            dueDate: [this.data ? this.data.dueDate : '', Validators.required],
-            status: [this.data ? this.data.status : '', Validators.required],
-            user: [this.data ? this.data.user : '', Validators.required],
+            // createdAt: [this.data ? this.data.createdAt : ''],
+            // updatedAt: [this.data ? this.data.updatedAt : ''],
+            // isDeleted: [this.data ? this.data.isDeleted : ''],
+            timesheetId: [this.data ? this.data.timesheetId : ''],
+            project: [this.data ? this.data.project : ''],
+            task: [this.data ? this.data.task : ''],
+            startDate: [this.data ? this.data.startDate : ''],
+            dueDate: [this.data ? this.data.dueDate : ''],
+            status: [this.data ? this.data.status : ''],
+            user: [this.data ? this.data.user : ''],
         });
     }
 
@@ -57,13 +59,13 @@ export class CreateEditComponent implements OnInit {
 
     onFormSubmit() {
         this.formSubmitted = true;
-        // console.log(this.userForm.valid);
+        console.log(this.userForm);
         if (this.userForm.valid) {
             console.log("this.data check", this.data);
             if (this.data) {
                 const formData = this.userForm.value;
-                formData.updatedAt = new Date().toISOString(); // Include current date in the createdAt field
-                formData.isDeleted = "false";
+                //formData.updatedAt = new Date().toISOString(); // Include current date in the createdAt field
+                //formData.isDeleted = "false";
 
                 this.restApiService.editTimesheet(formData).subscribe({
                     next: () => {
@@ -77,7 +79,7 @@ export class CreateEditComponent implements OnInit {
                 console.log(this.userForm.value);
                 const formData = this.userForm.value;
 
-                formData.createdAt = new Date().toISOString(); // Include current date in the createdAt field
+                //formData.createdAt = new Date().toISOString(); // Include current date in the createdAt field
                 console.log("formData.createdAt", formData.createdAt);
 
                 this.restApiService.createTimesheet(formData).subscribe({

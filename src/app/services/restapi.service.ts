@@ -36,13 +36,10 @@ export class RestapiService {
                             timesheetId: item.timesheetId,
                             project: item.project,
                             task: item.task,
-                            user: userData,
+                            user: item.user,
                             startDate: item.startDate,
                             dueDate: item.dueDate,
-                            status: statusData,
-                            createdAt: null,
-                            updatedAt: null,
-                            isDeleted: false
+                            status: item.status
                         };
                     });
                 })
@@ -66,13 +63,10 @@ export class RestapiService {
                             timesheetId: item.timesheetId,
                             project: item.project,
                             task: item.task,
-                            user: userData,
+                            user: item.user,
                             startDate: item.startDate,
                             dueDate: item.startDate,
-                            status: statusData,
-                            createdAt: null,
-                            updatedAt: null,
-                            isDeleted: false
+                            status: item.status
                         };
                     });
                 })

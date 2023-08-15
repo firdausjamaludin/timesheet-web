@@ -18,12 +18,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatSelectModule} from "@angular/material/select";
+import { LoginScreenComponent } from './authentication/login-screen/login-screen.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersListComponent,
-    CreateEditComponent
+    CreateEditComponent,
+    LoginScreenComponent
   ],
     imports: [
         BrowserModule,

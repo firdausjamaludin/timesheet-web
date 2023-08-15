@@ -80,8 +80,8 @@
                 <td></td>
             </tr>
         </table>
-        <div class="centerButton">
-            <button class="formButton" color="primary" mat-raised-button type="submit">{{ data ? "Update" : "Save" }}</button>
+        <div class="centerButton" mat-dialog-actions>
+            <button class="formButton" color="primary" mat-raised-button (click)="onFormSubmit()" type="submit">{{ data ? "Update" : "Save" }}</button>
             <button class="formButton" color="primary" [mat-dialog-close]="false" mat-raised-button type="button">Close</button>
         </div>
     </form>
