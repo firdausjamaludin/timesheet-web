@@ -42,8 +42,8 @@ export class CreateEditComponent implements OnInit {
             task: [this.data ? this.data.task : ''],
             startDate: [this.data ? this.data.startDate : ''],
             dueDate: [this.data ? this.data.dueDate : ''],
-            status: [this.data ? this.data.status.status : ''],
-            user: [this.data ? this.data.user.user : ''],
+            status: [this.data ? this.data.status : ''],
+            user: [this.data ? this.data.user : ''],
         });
     }
 
